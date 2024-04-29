@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bouncing Image</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+    .container {
+        position: relative;
+        height: 100vh;
+    }
+    .image {
+        position: absolute;
+        animation: bounce 5s infinite alternate;
+    }
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(calc(100vh - 100px));
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <img class="image" src="image.jpg" alt="Bouncing Image" style="left: 0;">
+</div>
+</body>
+</html>
