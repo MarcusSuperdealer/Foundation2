@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moving Button</title>
+<title>Bouncing Button Link</title>
 <style>
     /* Style for the button */
     .button {
@@ -14,36 +14,25 @@
         border-radius: 5px;
         cursor: pointer;
         position: relative;
-        transition: transform 0.2s;
+        animation: bounce 1s infinite alternate;
+        text-decoration: none; /* Remove underline from the link */
     }
-    /* Style for the button when hovered */
-    .button:hover {
-        transform: scale(1.1);
+
+    /* Bounce animation */
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-10px);
+        }
     }
 </style>
 </head>
 <body>
 
-<!-- Button that moves a certain number of times when touched -->
-<button class="button" onmouseover="moveButton(3)">Move Button</button>
-
-<script>
-    // Function to move the button a certain number of times
-    function moveButton(times) {
-        var button = document.querySelector('.button');
-        var count = 0;
-        button.addEventListener('mouseover', function move() {
-            // Move the button horizontally by 10px
-            button.style.left = (parseInt(button.style.left) || 0) + 10 + 'px';
-            count++;
-            // Stop moving after the specified number of times
-            if (count < times) {
-                // Request next frame for smooth animation
-                requestAnimationFrame(move);
-            }
-        });
-    }
-</script>
+<!-- Bouncing Button Link -->
+<a href="https://example.com" class="button">Bouncing Button Link</a>
 
 </body>
 </html>
