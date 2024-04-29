@@ -3,33 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foundation 2</title>
+<title>Moving Button</title>
 <style>
-    body {
-        margin: 0;
-        overflow: hidden;
-    }
-    .container {
+    /* Style for the button */
+    .button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
         position: relative;
-        height: 100vh;
+        transition: transform 0.2s;
     }
-    .image {
-        position: absolute;
-        animation: bounce 5s infinite alternate;
-    }
-    @keyframes bounce {
-        0% {
-            transform: translateY(0);
-        }
-        100% {
-            transform: translateY(calc(100vh - 100px));
-        }
+    /* Style for the button when hovered */
+    .button:hover {
+        transform: scale(1.1);
     }
 </style>
 </head>
 <body>
-<div class="container">
-  <a href="https://example.com" class="button">Foundation 2 info</a>
-</div>
+
+<!-- Button that moves a certain number of times when touched -->
+<button class="button" onmouseover="moveButton(3)">Move Button</button>
+
+<script>
+    // Function to move the button a certain number of times
+    function moveButton(times) {
+        var button = document.querySelector('.button');
+        var count = 0;
+        button.addEventListener('mouseover', function move() {
+            // Move the button horizontally by 10px
+            button.style.left = (parseInt(button.style.left) || 0) + 10 + 'px';
+            count++;
+            // Stop moving after the specified number of times
+            if (count < times) {
+                // Request next frame for smooth animation
+                requestAnimationFrame(move);
+            }
+        });
+    }
+</script>
+
 </body>
 </html>
